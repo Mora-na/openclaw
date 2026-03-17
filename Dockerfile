@@ -4,6 +4,6 @@ USER root
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
-RUN npm i -g @openclaw/clawhub
+RUN npm i -g clawhub
 
 ENTRYPOINT ["/entrypoint.sh"]
