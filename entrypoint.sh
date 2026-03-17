@@ -28,10 +28,11 @@ fi
 
 echo "-----------------------------------------------------------------------------------------"
 echo "Common commands are as follows："
-echo "1、openclaw config set gateway.controlUi.allowedOrigins '["http://localhost:xxxx","http://127.0.0.1:xxxx","your_public_domain"]'"
-echo "2、openclaw devices list"
-echo "3、openclaw devices approve your_request_id"
-echo "4、openclaw onboard --auth-choice openai-codex"
+echo "1、openclaw config set gateway.controlUi.allowedOrigins '["http://localhost:xxxx","http://127.0.0.1:xxxx","your_public_domain"]' # 更新跨域设置"
+echo "2、openclaw devices list # 展示设备列表"
+echo "3、openclaw devices approve your_request_id # 授权设备连接"
+echo "4、openclaw onboard --auth-choice openai-codex # 完整的首次引导流程：包含 OAuth 登录 + 生成/更新基础配置"
+echo "5、openclaw models auth login --provider openai-codex 只做模型提供方的 OAuth 登录/刷新"
 echo "-----------------------------------------------------------------------------------------"
 echo "Starting OpenClaw gateway..."
 exec openclaw gateway
