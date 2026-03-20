@@ -35,4 +35,4 @@ echo "4、openclaw onboard --auth-choice openai-codex # 完整的首次引导流
 echo "5、openclaw models auth login --provider openai-codex 只做模型提供方的 OAuth 登录/刷新"
 echo "-----------------------------------------------------------------------------------------"
 echo "Starting OpenClaw gateway..."
-exec openclaw gateway
+exec openclaw gateway run
