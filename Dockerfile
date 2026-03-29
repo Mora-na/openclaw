@@ -10,11 +10,6 @@ RUN if [ -e /usr/share/zoneinfo/Asia/Shanghai ]; then \
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
-RUN npm install -g n \
-    && n 22 \
-    && node -v \
-    && npm -v \
-    && npm uninstall -g n
 RUN npm i -g clawhub
 
 ENTRYPOINT ["/entrypoint.sh"]
