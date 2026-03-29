@@ -26,12 +26,6 @@ else
   echo "OpenClaw already initialized."
 fi
 
-# Node 22 may start the gateway with a smaller effective V8 heap limit.
-# Set a conservative default unless the user already configured one.
-if [[ "${NODE_OPTIONS:-}" != *"--max-old-space-size="* ]]; then
-  export NODE_OPTIONS="--max-old-space-size=${OPENCLAW_MAX_OLD_SPACE_SIZE_MB:-1536} ${NODE_OPTIONS:-}"
-fi
-
 echo "-----------------------------------------------------------------------------------------"
 echo "Common commands are as follows："
 echo "1、openclaw config set gateway.controlUi.allowedOrigins '["http://localhost:xxxx","http://127.0.0.1:xxxx","your_public_domain"]' # 更新跨域设置"
