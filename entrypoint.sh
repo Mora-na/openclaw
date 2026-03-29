@@ -26,6 +26,12 @@ else
   echo "OpenClaw already initialized."
 fi
 
+# Node 22 may start the gateway with a smaller effective V8 heap limit.
+# Set a conservative default unless the user already configured one.
+if [[ "${NODE_OPTIONS:-}" != *"--max-old-space-size="* ]]; then
+  export NODE_OPTIONS="--max-old-space-size=${OPENCLAW_MAX_OLD_SPACE_SIZE_MB:-1536} ${NODE_OPTIONS:-}"
+fi
+
 echo "-----------------------------------------------------------------------------------------"
 echo "Common commands are as follows："
 echo "1、openclaw config set gateway.controlUi.allowedOrigins '["http://localhost:xxxx","http://127.0.0.1:xxxx","your_public_domain"]' # 更新跨域设置"
@@ -34,5 +40,6 @@ echo "3、openclaw devices approve your_request_id # 授权设备连接"
 echo "4、openclaw onboard --auth-choice openai-codex # 完整的首次引导流程：包含 OAuth 登录 + 生成/更新基础配置"
 echo "5、openclaw models auth login --provider openai-codex 只做模型提供方的 OAuth 登录/刷新"
 echo "-----------------------------------------------------------------------------------------"
+echo "NODE_OPTIONS=${NODE_OPTIONS}"
 echo "Starting OpenClaw gateway..."
 exec openclaw gateway run
